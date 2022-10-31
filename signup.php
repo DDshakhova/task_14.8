@@ -12,12 +12,6 @@
             <div class="tip">
                 Создайте учётную запись для авторизации на сайте
             </div>
-        <?php
-if(isset($_SESSION['error'])){
-echo '<div class="errorMsg">'. $_SESSION['error'] .'</div>';
-unset($_SESSION['error']);
-}
-?>      
         <label for="name">Имя пользователя</label>
         <input type="text" name="login" id="login" placeholder="Логин" required >
         <label for="password">Пароль</label>
