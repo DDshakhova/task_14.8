@@ -1,9 +1,6 @@
 <?php
 
-function hello(){
-$welcome='Добро пожаловать, ';
-return $welcome;
-  }
+
 
 
  
@@ -42,14 +39,7 @@ return $welcome;
   }
   
   
-  function getCurrentUser():?string{
-      $loginFromCookie = $_COOKIE['login'] ?? '';
-      $passwordFromCooie = $_COOKIE['password'] ?? '';
-      if (checkPassword($loginFromCookie, $passwordFromCooie)){
-          return $loginFromCookie;
-      }
-  
-      return null;
+  function getCurrentUser(){
+    return isset($_SESSION['auth']) ? $_SESSION['login'] : null;
   }
-  
   ?>

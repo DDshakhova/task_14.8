@@ -49,10 +49,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: bisque;
+    text-align: center;
 }
 
 header {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
     height: 400px;
@@ -61,10 +62,18 @@ header {
 }
 
 header h1 {
+   
     color: rgb(247, 215, 175);
     font-size: 3rem;
     font-family: Bradley Hand, cursive;
     font-weight: 200;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.offer {
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
 footer {
     padding-top: 20px;
