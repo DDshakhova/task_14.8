@@ -1,4 +1,5 @@
 <?php session_start();
+$auth = $_SESSION['auth'] ?? null;
 include_once('functions.inc.php');
 ?>
 <!DOCTYPE html>
@@ -18,7 +19,13 @@ include_once('functions.inc.php');
                 <a href="#">Контакты</a>
                 <a href="#">Реклама</a>
             </div>
-            
+            <?php if(!$auth){
+     echo '
+     <div class="stranger">
+       <a href="login.php" >&raquo; Войти</a><br><br><br>
+       <a href="signup.php" >&raquo; Зарегистрироваться</a>
+     </div>';
+            }?>
  
 <section class="service" ><h3>Наши услуги</h3>
 <p>Комплекс расслабляющих процедур «Янтарный туман» 5000&#8381</p>
@@ -27,7 +34,8 @@ include_once('functions.inc.php');
 <p>Комплексная программа «На склонах Ли Юэ» 12000&#8381 </p>
 <p>Подарочные сертификаты -5000&#8381, -10000&#8381, -15000&#8381 </p>
 
-<?php if(!getCurrentUser()){
+<?php if(!$auth){
+    
    echo '<div class="offer"><span> Авторизуйтесь, чтобы получить персональную скидку!</span></div>'; 
 } else {
   echo '<div class="offer"><span>Специальное предложение и только для Вас - скидка в 3% в течение ближайших суток. До конца акции: <code id="timer"></code></span><script src="js/timer.php" ></script></div>'; 

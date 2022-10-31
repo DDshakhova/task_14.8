@@ -6,13 +6,17 @@
         <title>Вход</title>
        
     </head>   
-<?php session_start();
+<?php session_start(); 
 
-// $auth = $_SESSION['auth'] ?? null;
+$auth = $_SESSION['auth'] ?? null;
+?>
+<?php
+session_start();
 
-// if(!$auth) { ?>
+$auth = $_SESSION['auth'] ?? null;
 
-    <body class="login-bd">
+if(!$auth) { ?>
+  <body class="login-bd">
         <div class="container">
             <form method="post" action="usersData.php">
                 <h2 class="title">Вход</h2>
@@ -26,9 +30,15 @@
             </form>
         </div>
    </body>
-</html>
-    
-<!-- раскомм и дописать хвост -->
+  </html>
+
+<?php }
+
+else header("location: index.php")
+// контент для администратора
+
+?>
+
 
 <?php
 
