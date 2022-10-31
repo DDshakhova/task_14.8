@@ -20,12 +20,17 @@ include_once('functions.inc.php');
                 <a href="#">Реклама</a>
             </div>
             <?php if(!$auth){
-     echo '
+    
+    echo '
      <div class="stranger">
        <a href="login.php" >&raquo; Войти</a><br><br><br>
        <a href="signup.php" >&raquo; Зарегистрироваться</a>
-     </div>';
-            }?>
+     </div>'; 
+ } else {
+    echo'<a href="logout.php" >&raquo; Выйти</a>';
+   
+ }?>
+
  
 <section class="service" ><h3>Наши услуги</h3>
 <p>Комплекс расслабляющих процедур «Янтарный туман» 5000&#8381</p>

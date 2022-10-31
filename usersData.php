@@ -14,6 +14,7 @@ $password = $_POST['password'] ?? null;
 // зададим книгу паролей
 $users = [
      'admin' => ['id' => '1', 'password' => '132432'],
+     'user1'=> ['id' => 'coidzumi', 'password' => '123456'],
 ];
 
 
