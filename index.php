@@ -21,13 +21,20 @@ include_once('functions.inc.php');
             </div>
             <?php if(!$auth){
     
+    echo '<div class="offer"><span> Авторизуйтесь, чтобы получить персональную скидку!</span></div>'; 
+ } else {
+   echo '<div class="offer"><span>Специальное предложение только для Вас - скидка 3%. До конца акции: <code id="timer"></code></span><script src="js/timer.php" ></script></div>'; 
+   
+ }?>
+            <?php if(!$auth){
+    
     echo '
      <div class="stranger">
-       <a href="login.php" >&raquo; Войти</a><br><br><br>
-       <a href="signup.php" >&raquo; Зарегистрироваться</a>
+       <a href="login.php" >Войти</a><br><br><br>
+       <a href="signup.php" >Зарегистрироваться</a>
      </div>'; 
  } else {
-    echo'<a href="logout.php" >&raquo; Выйти</a>';
+    echo'<a href="logout.php" >Выйти</a>';
    
  }?>
 
@@ -38,14 +45,6 @@ include_once('functions.inc.php');
 <p>Комплекс омолаживающих процедур «Медовый лотос» 8000&#8381 </p>
 <p>Комплексная программа «На склонах Ли Юэ» 12000&#8381 </p>
 <p>Подарочные сертификаты -5000&#8381, -10000&#8381, -15000&#8381 </p>
-
-<?php if(!$auth){
-    
-   echo '<div class="offer"><span> Авторизуйтесь, чтобы получить персональную скидку!</span></div>'; 
-} else {
-  echo '<div class="offer"><span>Специальное предложение и только для Вас - скидка в 3% в течение ближайших суток. До конца акции: <code id="timer"></code></span><script src="js/timer.php" ></script></div>'; 
-  
-}?>
 </section>
 
 

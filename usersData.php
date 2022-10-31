@@ -1,11 +1,11 @@
 <?php
-echo '<pre>';
-echo 'REQUEST: ' . PHP_EOL;
-var_dump($_REQUEST);
-echo 'GET REQUEST: ' . PHP_EOL;
-var_dump($_GET);
-echo 'POST REQUEST: ' . PHP_EOL;
-var_dump($_POST);
+// echo '<pre>';
+// echo 'REQUEST: ' . PHP_EOL;
+// var_dump($_REQUEST);
+// echo 'GET REQUEST: ' . PHP_EOL;
+// var_dump($_GET);
+// echo 'POST REQUEST: ' . PHP_EOL;
+// var_dump($_POST);
 
 
 $username = $_POST['login'] ?? null;
@@ -13,15 +13,15 @@ $password = $_POST['password'] ?? null;
 
 // зададим книгу паролей
 $users = [
-     'admin' => ['id' => '1', 'password' => '132432'],
-     'user1'=> ['id' => 'coidzumi', 'password' => '123456'],
+     'admin' => ['id' => '1', 'password' => '789d743a205201340d53eea0319f1f16'],
+     'user1'=> ['id' => 'coidzumi', 'password' => 'e10adc3949ba59abbe56e057f20f883e'],
+     'user2'=> ['id' => 'user', 'password' => 'c33367701511b4f6020ec61ded352059'],
 ];
 
-
-if (null !== $username || null !== $password) {
+switch (null !== $username || null !== $password) {
 
     // Если пароль из базы совпадает с паролем из формы
-    if ($password === $users['admin']['password']) {
+    case md5($password) === $users['admin']['password']:
     
          // Стартуем сессию:
         session_start(); 
@@ -32,34 +32,44 @@ if (null !== $username || null !== $password) {
         // Пишем в сессию логин и id пользователя
         $_SESSION['id'] = $users['admin']['id']; 
         $_SESSION['login'] = $username; 
+        break;
+    case md5($password) === $users['user1']['password']:
+    
+            // Стартуем сессию:
+           session_start(); 
+           
+           // Пишем в сессию информацию о том, что мы авторизовались:
+           $_SESSION['auth'] = true; 
+           
+           // Пишем в сессию логин и id пользователя
+           $_SESSION['id'] = $users['user1']['id']; 
+           $_SESSION['login'] = $username; 
+           break;
+    case md5($password) === $users['user2']['password']:
+    
+            // Стартуем сессию:
+           session_start(); 
+           
+           // Пишем в сессию информацию о том, что мы авторизовались:
+           $_SESSION['auth'] = true; 
+           
+           // Пишем в сессию логин и id пользователя
+           $_SESSION['id'] = $users['user2']['id']; 
+           $_SESSION['login'] = $username; 
+           break;
+        default:
+        echo 'Пользователя с таким логином или паролем не существует. <a href="login.php">Повторный вход</a>';
 
     }
-}
 
     
 $auth = $_SESSION['auth'] ?? null;
 
 // если авторизованы
 if ($auth) {
+    header ("location: index.php")
 ?>
-// контент для администратора
-    <a href="index.php">Вернуться на главную</a>
+
 
 <?php }
 
-// {
-//     "Users": {
-//         "1": {
-//             "login": "user",
-//             "password hash": "12dea96fec20593566ab75692c9949596833adc9",
-//             "birthday date": "",
-//             "role": "user"
-//         },
-//         "2": {
-//             "login": "admin",
-//             "password hash": "1e8923210ec0499314a6b2b83c5b7c78bfb204d3",
-//             "birthday date": "2022-10-27",
-//             "role": "admin"
-//         }
-//     }
-// }

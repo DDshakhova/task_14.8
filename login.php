@@ -6,10 +6,6 @@
         <title>Вход</title>
        
     </head>   
-<?php session_start(); 
-
-$auth = $_SESSION['auth'] ?? null;
-?>
 <?php
 session_start();
 
