@@ -29,3 +29,29 @@
 </html>
     
 <!-- раскомм и дописать хвост -->
+
+<?php
+
+if (!empty($_POST)){
+    
+    require "functions.inc.php";
+
+    $login = $_POST['login'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $date = $_POST['dateOfBirth'] ?? '';
+
+    if (!$date)
+    {
+        $date = new DateTime(date("Y-m-d"));
+    }
+    
+    if (checkPassword($login, $password)){
+        setcookie('login', $login, 0, '/');
+        setcookie('password', $password, 0, '/');
+        setcookie('dateOfBirth', $date, 0, '/');
+        header('Location: index.php');
+    } else {
+        $error = 'Ошибка авторизации';
+    }
+}
+?>
