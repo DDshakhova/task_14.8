@@ -7,10 +7,6 @@ var_dump($_GET);
 echo 'POST REQUEST: ' . PHP_EOL;
 var_dump($_POST);
 
-echo 'Привет, пользователь ' . $_POST['login'] . '!';
-?>
-
-<?php
 
 $username = $_POST['login'] ?? null;
 $password = $_POST['password'] ?? null;
@@ -49,3 +45,20 @@ if ($auth) {
     <a href="index.php">Вернуться на главную</a>
 
 <?php }
+
+// {
+//     "Users": {
+//         "1": {
+//             "login": "user",
+//             "password hash": "12dea96fec20593566ab75692c9949596833adc9",
+//             "birthday date": "",
+//             "role": "user"
+//         },
+//         "2": {
+//             "login": "admin",
+//             "password hash": "1e8923210ec0499314a6b2b83c5b7c78bfb204d3",
+//             "birthday date": "2022-10-27",
+//             "role": "admin"
+//         }
+//     }
+// }

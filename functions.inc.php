@@ -8,7 +8,7 @@ return $welcome;
 
  
   function getUsersList(){ 
-      return require 'usersData.json';
+      return require 'usersData.php';
   }
   
 

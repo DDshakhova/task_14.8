@@ -14,7 +14,7 @@
 
     <body class="login-bd">
         <div class="container">
-            <form method="post" action="process.php">
+            <form method="post" action="usersData.php">
                 <h2 class="title">Вход</h2>
                 <div class="link">Войдите или <a href="signup.php">зарегистрируйтесь на сайте</a>
                 <br>
@@ -39,11 +39,6 @@ if (!empty($_POST)){
     $login = $_POST['login'] ?? '';
     $password = $_POST['password'] ?? '';
     $date = $_POST['dateOfBirth'] ?? '';
-
-    if (!$date)
-    {
-        $date = new DateTime(date("Y-m-d"));
-    }
     
     if (checkPassword($login, $password)){
         setcookie('login', $login, 0, '/');
