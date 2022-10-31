@@ -1,56 +1,71 @@
 <?php
 
-
-
 function hello(){
 $welcome='Добро пожаловать, ';
 return $welcome;
   }
+
+
+  /*функция  возвращает массив всех пользователей и хэшей их паролей*/
+  function getUsersList(){ 
+      return require 'usersData.json';
+  }
   
-/* Организована система хранения паролей, (например, хранение пары логин – хэш пароля в файле)*/
-function fetchLocalJSON(){
-    $strData='usersData.json';
-    $strFileHandle = fopen($strData,'r') or exit('Файл недоступен!');
-    $strUsers = fread($strFileHandle,filesize($strData));
-    fclose($strFileHandle);
-    return $strUsers;
-}
-
-/* функция getUsersList() возвращает массив всех пользователей и хэшей их паролей; */
-function getUsersList($strData='local_json'){
-    switch ($strData) {
-        case 'local_json':
-          $arrReturned=(json_decode(fetchLocalJSON(),1))['Users'];
-            break;
-        default:
-          $arrReturned=(json_decode(fetchLocalJSON(),1))['Users'];
+  /*функция  проверяет, существует ли пользователь с указанным логином*/
+  function existsUser($login){
+      $users = getUsersList();
+  
+      foreach ($users as $user){
+          if ($user['login'] === $login){
+                  return true;
+              }
       }
-    return $arrReturned;
-}
+  
+      return false;
+  }
+  
 
-/* функция existsUser($login) проверяет, существует ли пользователь с указанным логином; */
-function existsUser($login){
-    $arrUsers=getUsersList();
-    $strExist=0;
-    foreach($arrUsers as $arrProperties) {
-        if ($login === $arrProperties['login']) $strExist=1;
+  /*функция возвращает true тогда, когда существует пользователь с 
+  указанным логином и введенный им пароль прошел проверку, иначе — false*/
+  function checkPassword(string $login, string $password){
+      $users = getUsersList();
+  
+      if (existsUser($login))
+      {
+          foreach ($users as $user){
+              if ($user['login'] === $login &&
+                 password_verify($password, $user['password'])){
+                      return true;
+                  }
+          }
       }
-    return (bool)$strExist;
-}
-
-/* функция checkPassword($login, $password) пусть возвращает true тогда, когда существует пользователь с указанным логином и введенный им пароль прошел проверку, иначе — false; */
-function checkPassword($login, $password){
-    $arrUsers=getUsersList();
-    $strVerified=0;
-    foreach($arrUsers as $arrProperties) {
-        if (($login === $arrProperties['login']) && (sha1($password) === $arrProperties['password hash'])) $strVerified=1;
+   
+      return false;
+  }
+  
+  /*функция, которая возвращает либо имя вошедшего на сайт 
+  пользователя, либо <null>*/
+  function getCurrentUser():?string{
+      $loginFromCookie = $_COOKIE['login'] ?? '';
+      $passwordFromCooie = $_COOKIE['password'] ?? '';
+      if (checkPassword($loginFromCookie, $passwordFromCooie)){
+          return $loginFromCookie;
       }
-    return (bool)$strVerified;
-}
-// i.e., admin:132432
-
-/* функция getCurrentUser() которая возвращает либо имя вошедшего на сайт пользователя, либо null. */
-function getCurrentUser(){
-    return isset($_SESSION['auth']) ? $_SESSION['login'] : null;
-}
-?>
+  
+      return null;
+  }
+  
+  function getUserDate(){
+      $date = $_COOKIE['dateOfBirth'] ?? '';
+      $loginFromCookie = $_COOKIE['login'] ?? '';
+      $passwordFromCooie = $_COOKIE['password'] ?? '';
+  
+      if (checkPassword($loginFromCookie, $passwordFromCooie)){
+          return $date;
+      }
+  
+      return null;
+  
+  }
+  
+  ?>
