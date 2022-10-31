@@ -28,7 +28,7 @@ include_once('functions.inc.php');
     
     echo '<div class="offer"><span> Авторизуйтесь, чтобы получить персональную скидку!</span></div>'; 
  } else {
-   echo '<div class="offer"><span>Специальное предложение только для Вас - скидка 3%. До конца акции: <code id="timer"></code></span><script src="js/timer.php" ></script></div>'; 
+   echo '<div class="offer"><span>Специальное предложение только для Вас - скидка 3%. До конца акции: <code id="timer"></code></span><script src="timer.js" ></script></div>'; 
    
  }?>
 <section class="service" ><h3>Наши услуги</h3>
