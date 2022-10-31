@@ -1,0 +1,92 @@
+.login-bd {
+background-image: url(./images/shawnee-wilborn-tMt-m2zECRc-unsplash.jpg);
+background-size: cover;
+}
+
+.signup-bd {
+background-image: url(./images/sixteen-miles-out-6pxsopTGyeU-unsplash.jpg);
+background-size: cover;
+}
+.container {
+    background-color: rgb(243, 217, 161);
+    color: white;
+    width: 400px;
+    opacity: 75%;
+    border-radius: 0%;
+    border: 1px solid black;
+    font-weight: 700;
+    border-radius: 20px;
+    padding: 20px;
+    width: 350px;
+    margin: 100px auto;
+}
+
+.service, .album {
+    width: 768px;
+    margin: 0 auto 32px;
+    padding: 6px 15px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+}
+
+.offer {
+    color: rgba(233, 183, 119, 0.938);
+    font-weight: bold;
+    font-size: larger;
+    text-shadow: 2pt;
+}
+
+.photo {
+    background-color: #f1f1f1;
+    min-width: 200px;
+    min-height: 200px;
+    margin: 10px;
+    background-clip: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: bisque;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background: darkslategray url(./images/chris-jarvis-0Pf7fKRtDPI-unsplash.jpg) bottom no-repeat;
+    background-size: cover;
+}
+
+header h1 {
+    color: rgb(247, 215, 175);
+    font-size: 3rem;
+    font-family: Bradley Hand, cursive;
+    font-weight: 200;
+}
+footer {
+    padding-top: 20px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+footer .links {
+    margin-bottom: 50px;
+}
+
+footer .links > a {
+    color: darkslategray;
+    padding: 0 25px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.copyright {
+    color: burlywood;
+    font-family: 'Times New Roman', Times, serif;
+}
